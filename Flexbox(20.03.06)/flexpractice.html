@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>flex practice</title>
+    <style>
+        .wrap {
+            height: 200px;
+            display: flex;
+            justify-content: space-around;
+                /*align-items의 default는 stretch(크기지정 안되어있다면 박스 크기를 맞춰주기).
+              center는 각 요소들의 중앙을 기준으로 정렬
+            baseline은 글꼴의 기준선에 맞추어서 모든 요소를 정렬.
+            flex-wrap:wrap을 이용하여 원래 width와 height를 유지한 채로 flex를 적용할 수 있다.
+            */
+
+        }
+
+        .box {
+            text-align: center;
+            background-color: aquamarine;
+            border: 1px solid;
+            width: 100px;
+            height: 100px;
+            font-weight: bolder;
+        }
+        .box:nth-child(2){
+            align-self: flex-end;
+        }
+
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+</body>
+
+</html>

@@ -9,4 +9,7 @@ Today I Learned
 - [200306 flexbox예습](https://github.com/SeongIkKim/TIL/blob/master/Flexbox(20.03.06)/flexpractice.html)
 
 ### Machine/Deep Learning
-- [20.03.15 모두를 위한 딥러닝 시즌 2 - 1~2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_1~2.md)
+- [200315 모두를 위한 딥러닝 시즌 2 - 1~2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_1~2.md)
+
+### Data Structure
+- [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/week1/200317_DS.md)

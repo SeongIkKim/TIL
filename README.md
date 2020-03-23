@@ -1,8 +1,9 @@
 # TIL
-Today I Learned
+Today I Learned!
 프로젝트/스터디는 아니지만 혼자 공부한 내용들을 올리기 위해서 사용하는 레포입니다.
 
 <hr>
+
 ## 분류
 
 ### 웹
@@ -10,6 +11,7 @@ Today I Learned
 
 ### Machine/Deep Learning
 - [200315 모두를 위한 딥러닝 시즌 2 - 1~2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_1~2.md)
+- [200324 모두를 위한 딥러닝 시즌 2 - Lab 2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200324_Lab_2.md)
 
 ### Data Structure
 - [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/week1/200317_DS.md)

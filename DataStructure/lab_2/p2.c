@@ -2,35 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Node* PtrToNode; // 학생구조체(data)와 다음노드의 주소(link)를 가지고있는 노드구조체
+typedef struct Node* PtrToNode; // 학생구조체(data)와 다음노드(link)를 가지고있는 노드구조체
 typedef PtrToNode List;
 typedef PtrToNode Position;
 
 typedef struct {
     char* studentID;
     char* studentName;
-} StudentNode;
+} StudentData;
 
 // 노드 형태 선언
 struct Node {
-    StudentNode st; // data part
+    StudentData st; // data part
     PtrToNode next; // link part
 };
 
-//리스트를 만드는 함수
+// 리스트를 만드는 함수
 List MakeList(){
     List L = malloc(sizeof(struct Node));
     L->next = NULL;
     return L;
 };
 
-void Insert(StudentNode X, List L, Position P);
-void Delete(StudentNode X, List L);
-Position Find(StudentNode X, List L);
+void Insert(StudentData X, List L, Position P);
+void Delete(StudentData X, List L);
+Position Find(StudentData X, List L);
 void PrintList(List L);
 
 
-void Insert(StudentNode X, List L, Position P){
+void Insert(StudentData X, List L, Position P){
     Position Tmp;
     Tmp = malloc(sizeof(struct Node));
 
@@ -39,11 +39,11 @@ void Insert(StudentNode X, List L, Position P){
     P ->next = Tmp; // 기존 node의 next가 Tmp를 바라보게 만듬
 };
 
-void Delete(StudentNode X, List L){
+void Delete(StudentData X, List L){
 
 };
 
-Position Find(StudentNode X, List L){
+Position Find(StudentData X, List L){
     return 0;
 };
 
@@ -62,8 +62,7 @@ int main(){
     // fread는 줄바꿈이 있든 없든 정해진 크기만큼 읽는다(단, buffer를 {0,}으로 초기화해야한다)
     // fread(buffer, sizeof(buffer), 1, fp);
 
-    List StudentList;
-    
+    List StudentList = MakeList();
     
     while(!feof(fp)){   // feof는 파일 끝에 도달했을경우에만 0을 반환한다.
         fgets(buffer, sizeof(buffer), fp);
@@ -78,15 +77,30 @@ int main(){
             i++;
             nowStr = strtok(NULL, " "); // nowStr을 다음 문자열(토큰)으로 재할당;
         }
-        
 
-        // switch(*nowStr){
-        //     case 'i' :
-                
-        //         break;
-        //     default :
-        //         printf("다른문자입니다.\n");
-        // }
+        char operation = *sArr[0]; // sArr[0]은 포인터형이고, *sArr[0]은 char형이다
+
+        // operation에 따라 연산처리
+        switch(operation){
+            case 'i':{
+                char* fullName = malloc(sizeof(char) * 65);
+                char* firstName = sArr[2];
+                char* lastName = sArr[3];
+
+                strcat(fullName, firstName);
+                strcat(fullName, " ");
+                strcat(fullName, lastName);
+                printf(fullName);
+
+                // StudentData X = {*sArr[]}
+            
+                // Insert(StudentData X, StudentList, Position P);
+                break;
+            }
+            default :{
+                printf("올바르지 않은 문자입니다.\n");
+            }
+        }
     }
     fclose(fp);
 

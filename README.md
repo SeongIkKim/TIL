@@ -14,4 +14,5 @@ Today I Learned!
 - [200324 모두를 위한 딥러닝 시즌 2 - Lab 2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200324_Lab_2.md)
 
 ### Data Structure
-- [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/week1/200317_DS.md)
+- [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_1/200317_DS.md)
+- [200324 Linked List 정렬 구현, 파일입출력 포함](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_2/p2.c)

@@ -35,23 +35,18 @@ Stack CreateStack(){
 
 int IsFull(Stack S){
 	if (S->TopOfStack == S->Capacity-1){
-		printf("IsFull-->return 1\n");
 		return 1;
 	}
 	else {
-		printf("IsFull-->return 0\n");
-		printf("TopOfStack: %d, Capacity: %d\n",S->TopOfStack, S->Capacity);
 		return 0;
 	}
 }
 
 int IsEmpty(Stack S){
 	if (S->TopOfStack == -1){
-		printf("IsEmpty-->return 1\n");
 		return 1;
 	}
 	else {
-		printf("IsEmpty-->return 0\n");
 		return 0;
 	}
 }
@@ -62,7 +57,8 @@ void Push(int X, Stack S){
 		printf("Full\n");
 	}
 	else{
-		S->Array[++(S->TopOfStack)];
+		S->Array[++S->TopOfStack] = X;
+		// printf("pushed %d\n",S->Array[S->TopOfStack]);
 	}
 }
 
@@ -87,22 +83,28 @@ int main(){
 	
 	Stack S = CreateStack();
 	
+	int NumOfInst;
+	
 	while(1){
 		line++;
 		fgets(buffer, sizeof(buffer), fp);
 		
-		if(feof(fp)){
+		
+	
+		if(feof(fp) & line>NumOfInst+1){
 			break;
 		}
 		
 		if(*(buffer+(strlen(buffer)-1)) == '\n'){
-			*(buffer+(strlen(buffer)-1)) == 0;
+			*(buffer+(strlen(buffer)-1)) = '\0';
 		}
+		
 		
 		if(line==1){
 			// 몇 번의 push와 pop이 수행될 건지
-			int NumOfInst = atoi(buffer);
+			NumOfInst = atoi(buffer);
 		}
+		
 		else{
 			// push or pop용 명령 처리
 			char *sArr[2];
@@ -115,9 +117,7 @@ int main(){
 				nowStr = strtok(NULL, " ");
 			}
 			
-			free(nowStr);
 			
-			printf("sArr[0] : %s\n",sArr[0]);			
 
 			if(!strcmp(sArr[0],"push")){
 				int X = atoi(sArr[1]);

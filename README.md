@@ -16,3 +16,4 @@ Today I Learned!
 ### Data Structure
 - [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_1/200317_DS.md)
 - [200324 Linked List 정렬 구현 in 리눅스 환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_2/p2.c)
+- [200330 Stack, Queue, Postfix conversion&evaluation 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_3)

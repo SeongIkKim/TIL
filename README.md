@@ -12,6 +12,7 @@ Today I Learned!
 ### Machine/Deep Learning
 - [200315 모두를 위한 딥러닝 시즌 2 - 1~2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_1~2.md)
 - [200324 모두를 위한 딥러닝 시즌 2 - Lab 2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200324_Lab_2.md)
+- [200406 모두를 위한 딥러닝 시즌 3 - 3강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_3.md)
 
 ### Data Structure
 - [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_1/200317_DS.md)

@@ -22,3 +22,4 @@ Today I Learned!
 
 ### Operating System
 - [200413 Operating System Concepts 8th 정리 1](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200413_OS_1.md)
+- [200413 Operating System Concepts 8th 정리 2](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200414_OS_2.md)

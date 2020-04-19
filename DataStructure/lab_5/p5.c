@@ -90,6 +90,7 @@ Node *DeleteNode(int value, Node *root, FILE *fp){
 		}
 		
 	}
+	return root;
 };
 
 // 탐색

@@ -14,7 +14,7 @@ Today I Learned!
 - [200324 모두를 위한 딥러닝 시즌 2 - Lab 2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200324_Lab_2.md)
 - [200406 모두를 위한 딥러닝 시즌 2 - 3강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200406_lecture_3.md)
 
-### Data Structure
+### Data Structure(in C)
 - [200317 selection sort, structure 실습](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_1/200317_DS.md)
 - [200324 Linked List 정렬 구현 in 리눅스 환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_2/p2.c)
 - [200330 Stack, Queue, Postfix conversion&evaluation 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_3)
@@ -25,4 +25,5 @@ Today I Learned!
 ### Operating System
 - [200413 Operating System Concepts 8th 정리 1](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200413_OS_1.md)
 - [200413 Operating System Concepts 8th 정리 2](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200414_OS_2.md)
-- [200419 Operating System Concepts 8th 정리 3 (~Chapter 1)](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200419_OS_3.md)
+- [200419 Operating System Concepts 8th 정리 3](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200419_OS_3.md)
+- [200425 Operating System Concepts 8th 정리 4](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200425_OS_4.md)

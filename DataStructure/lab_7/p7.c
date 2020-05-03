@@ -17,17 +17,17 @@ int *Pick(int edgeSize, int E[edgeSize][2]){
 	int x = rand()%edgeSize;
 	int arr[2] = {0,0};
 	
-	while(E[x][0] == 0){
-		x = rand()%edgeSize;
-	}
-	
 	// printf("x = %d\n E[x]={%d,%d}\n",x,E[x][0],E[x][1]);
 	
 	static int choice[2]; // 랜덤 엣지를 뽑아 choice에 저장해둠
 	memcpy(choice,E[x],sizeof(E[x]));
-	memcpy(E[x],arr,sizeof(arr));
 	
-	// printf("이건 지워진거 %d,%d\n",E[x][0],E[x][1]);
+	// 지울 엣지 이후의 엣지들을 한칸씩 당기고, E의 길이를 줄인다.
+	int i;
+	for (i=x+1;i<edgeSize;i++){
+		memcpy(E[i-1],E[i],sizeof(E[i]));
+	}
+	memcpy(E[i-1],arr,sizeof(arr));
 	
 	return choice;
 }
@@ -56,10 +56,7 @@ void Union(int r1, int r2, int *DS){
 void printS(int setSize, int *DS){
 	int i;
 	for(i=1; i<=setSize;i++){
-		printf("%d ",DS[i]);
-		// if (i%size == 0){
-		// 	printf("\n");
-		// }
+		// printf("%d ",DS[i]);
 	}
 	printf("\n");
 }
@@ -72,6 +69,7 @@ int main(){
 	FILE *output;
 	
 	input = fopen("input.txt","r");
+	output = fopen("output.txt", "w");
 	
 	fgets(buffer, sizeof(buffer), input);
 	
@@ -98,24 +96,139 @@ int main(){
 		}
 	}
 	for(i=1; i<=size*(size-1); i++){ // 가로 edge 추가
-		E[i+29][0] = i;
-		E[i+29][1] = i+size;
+		E[i+size*(size-1)-1][0] = i;
+		E[i+size*(size-1)-1][1] = i+size;
 	}
-	for (i=0; i<edgeSize;i++){
-		printf("(%d,%d) ",E[i][0],E[i][1]);
-		if (i%size==size-1){
-			printf("\n");
-		}
-	}
+	
+	// for (i=0; i<edgeSize;i++){ /// 프린트코드
+	// 	printf("(%d,%d) ",E[i][0],E[i][1]);
+	// 	if (i%size==size-1){
+	// 		printf("\n");
+	// 	}
+	// }
 	
 	srand((unsigned int)time(NULL)); // 난수 seed 생성
 	
-	int *choice = Pick(edgeSize,E);
-	// printf("이건 choice %d,%d\n",choice[0],choice[1]);
+	count = 0;
+	
+	int Maze[2*size*(size-1)][2];
+	int MazeSize=0;
+	
+	while (count < setSize && edgeSize != 0){
+		
+		// printf("edgeSize = %d\n",edgeSize);
+		int *choice = Pick(edgeSize,E);
+		edgeSize--;
+		// printf("이건 choice %d,%d\n",choice[0],choice[1]);
+		
+		int u = Find(choice[0],S);
+		int v = Find(choice[1],S);
+
+		if (u != v){
+			Union(u,v,S);
+			count++; // 한번 union 할때마다 1개의 set을 합치므로, n개의 set을 합치려면 총 n-1번 해야한다.
+			// printf("count: %d\n ",count);
+		}
+		else{
+			memcpy(Maze[MazeSize],choice,2*sizeof(int));
+			MazeSize++;
+		}
+	}
+	for (i=0; i<edgeSize;i++){
+		memcpy(Maze[MazeSize],E[i],sizeof(E[i]));
+		MazeSize++;
+	}
 	
 	
+	// printS(setSize,S);
+	// for (i=0; i<MazeSize;i++){ ///프린트코드
+	// 	printf("(%d,%d) ",Maze[i][0],Maze[i][1]);
+	// 	if (i%size==size-1){
+	// 		printf("\n");
+	// 	}
+	// }
 	
+	/* 지금부터 미로찍기 */
+	int last = 2*size+1;
+	// printf("\n\n");
 	
+	int row;
+	
+	/* 첫줄 */
+	row = 1;
+	for (i=1;i<=last;i++){
+		if (i%2==0){
+			fprintf(output,"-");
+		}
+		else{
+			fprintf(output,"+");
+		}
+	}
+	fprintf(output,"\n");
+	
+	/* 중간줄 */
+	row++;
+	int column=1;
+	while (row != last){
+		if (row%2 == 0){
+			if (row==2){fprintf(output," ");}else{fprintf(output,"|");}
+			for(column=2; column<last;column++){
+				if (column%2 == 0){
+					fprintf(output," ");
+				}
+				else{
+					for (i=0;i<MazeSize;i++){
+						if (Maze[i][0]==size*(row/2-1)+(column/2) && Maze[i][1]==size*(row/2-1)+(column/2)+1){
+							fprintf(output,"|");
+							break;
+						}
+						if (i==MazeSize-1){
+							fprintf(output," ");
+						}
+					}
+				}
+			}
+			if (row==last-1){fprintf(output," ");}else{fprintf(output,"|");}
+		}
+		else{
+			fprintf(output,"+");
+			for(column=2; column<last;column++){
+				if (column%2 == 1){
+					fprintf(output,"+");
+				}
+				else{
+					for (i=0;i<MazeSize;i++){
+						// fprintf(output,"Maze[i]={%d,%d},column=%d\n",Maze[i][0],Maze[i][1],column);
+						if (Maze[i][0]==size*((row-3)/2)+column/2 && Maze[i][1]==size*((row-3)/2)+column/2+size){
+							fprintf(output,"-");
+							break;
+						}
+						if (i==MazeSize-1){
+							fprintf(output," ");
+						}
+					}
+				}
+			}
+			fprintf(output,"+");
+		}
+		fprintf(output,"\n");
+		row++;
+	}
+	
+	/* 끝줄 */
+	for (i=1;i<=last;i++){
+		if (i%2==0){
+			fprintf(output,"-");
+		}
+		else{
+			fprintf(output,"+");
+		}
+	}
+	fprintf(output,"\n");
+	
+		
 	
 	fclose(input);
+	fclose(output);
+	
 }

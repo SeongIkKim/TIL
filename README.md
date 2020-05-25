@@ -23,7 +23,7 @@ Today I Learned!
 - [200420 ABL Tree 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_6/p6.c)
 - [200427 Maze Generator 구현 by Disjoint Set in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_7/p7.c)
 - [200511 MaxHeap 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_8/p8.c)
-- [200518 B-Tree Insert 및 Inorder Traversal 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_8/p8.c)
+- [200518 B-Tree Insert 및 Inorder Traversal 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_9/p9.c)
 
 ### Operating System
 - [200413 Operating System Concepts 8th 정리 1](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200413_OS_1.md)

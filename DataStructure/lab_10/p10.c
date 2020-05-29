@@ -88,7 +88,7 @@ int *returnAdjacent(Graph G, int X){
 
 void bubbleSort(int *number, Graph G){
 	int i,j,temp;
-	int num = sizeof(number)/sizeof(int);
+	int num = G.size;
 	for(i = 0 ; i < num ; i ++) {
     	for(j = 0 ; j < num -i -1 ; j ++) {
             if(G.node[number[j]]>G.node[number[j+1]]) {

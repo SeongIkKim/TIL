@@ -16,6 +16,7 @@ typedef struct Queue{
 	int max_queue_size;
 }Queue;
 
+
 // 노드 이용하여 그래프 만들기
 Graph CreateGraph(int *nodes, int size){
 	Graph G;
@@ -47,7 +48,7 @@ void InsertEdge(Graph G, int a, int b){
 		if (G.node[i] == b){to = i;}
 	}
 	
-	printf("%d:%d, %d:%d\n",a,from,b,to);
+	// printf("%d:%d, %d:%d\n",a,from,b,to);
 	
 	G.matrix[from][to] = 1;
 };
@@ -59,17 +60,42 @@ void TopSort(Graph G){
 
 // X사이즈의 Queue 생성
 Queue MakeNewQueue(int X){
+	Queue Q;
+	Q.first = 0;
+	Q.rear = -1;
+	Q.qsize = 0;
+	Q.max_queue_size = X;
+	Q.key = (int*)malloc(sizeof(int)*Q.max_queue_size);
 	
+	return Q;
 };
 
 // Queue의 rear에 새로운 element 추가
-void Enequeue(Queue *Q, int X){
+void Enqueue(Queue *Q, int X){
+	Q->key[++(Q->rear)] = X;
+	Q->qsize++;
 	
+	// int i;
+	// printf("now queue ");
+	// for(i=Q->first;Q->key[i];i++){
+	// 	printf("%d ",Q->key[i]);
+	// }
+	// printf("\n");
 };
 
 // Queue의 front에 node를 빼낸다
 void Dequeue(Queue *Q){
+	int pop = Q->key[Q->first++];
+	Q->qsize--;
 	
+	// printf("pop %d \n",pop);
+	
+	// int i;
+	// printf("now queue ");
+	// for(i=Q->first; Q->key[i] ;i++){
+	// 	printf("%d ",Q->key[i]);
+	// }
+	// printf("\n");
 };
 
 void PrintMatrix(Graph G,FILE *fp){
@@ -127,7 +153,7 @@ int main(){
 	
 	for(i=0; edge != NULL; i++){
 		edges[i] = edge;
-		printf("%s ",edges[i]);
+		// printf("%s ",edges[i]);
 		edge = strtok(NULL, " ");
 	}
 	printf("\n");
@@ -138,6 +164,13 @@ int main(){
 		InsertEdge(G,from,to);
 	}
 	
+	Queue Q = MakeNewQueue(G.size);
+	
+	Enqueue(&Q,3);
+	Enqueue(&Q,4);
+	
+	Dequeue(&Q);
+	Dequeue(&Q);
 	
 	
 

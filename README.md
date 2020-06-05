@@ -34,3 +34,5 @@ Today I Learned!
 - [200425 Operating System Concepts 8th 정리 4](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200425_OS_4.md)
 - [200425 Operating System Concepts 8th 정리 5](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200514_OS_5.md)
 - [200601 Operating System Concepts 8th 정리 6](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200601_OS_6.md)
+- [200601 Operating System Concepts 8th 정리 7](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200603_OS_7.md)
+- [200606 Operating System Concepts 8th 정리 8](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200606_OS_8.md)

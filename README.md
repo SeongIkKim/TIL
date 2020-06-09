@@ -26,6 +26,7 @@ Today I Learned!
 - [200518 B-Tree Insert 및 Inorder Traversal 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_9/p9.c)
 - [200525 Topological Sort 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_10/p10.c)
 - [200601 Dijkstra algorithm 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_11/p11.c)
+- [200608 Hash open addressing 구현 in 리눅스환경](https://github.com/SeongIkKim/TIL/blob/master/DataStructure/lab_12/p12.c)
 
 ### Operating System
 - [200413 Operating System Concepts 8th 정리 1](https://github.com/SeongIkKim/TIL/blob/master/OperatingSystem/200413_OS_1.md)

@@ -9,6 +9,9 @@ Today I Learned!
 ### 웹
 - [200306 flexbox예습](https://github.com/SeongIkKim/TIL/blob/master/Flexbox(20.03.06)/flexpractice.html)
 
+### DevOps
+- [200530 Docker 간단배포](https://github.com/SeongIkKim/TIL/blob/master/Devops/Docker_simple_practice.md)
+
 ### Machine/Deep Learning
 - [200315 모두를 위한 딥러닝 시즌 2 - 1~2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200315_lecture_1~2.md)
 - [200324 모두를 위한 딥러닝 시즌 2 - Lab 2강](https://github.com/SeongIkKim/TIL/blob/master/DLZeroToAll/200324_Lab_2.md)

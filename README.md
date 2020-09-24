@@ -9,7 +9,12 @@ Today I Learned!
 ### 웹
 - [200306 flexbox예습](https://github.com/SeongIkKim/TIL/blob/master/Flexbox(20.03.06)/flexpractice.html)
 
+### TDD
+
+* [200925 <테스트 주도 개발 - 켄트 백> 1~4장 정리](https://github.com/SeongIkKim/TIL/blob/master/TDD/Ch1~4.md)
+
 ### DevOps
+
 - [200530 Docker 간단배포](https://github.com/SeongIkKim/TIL/blob/master/DevOps/Docker_simple_practice.md)
 
 ### Machine/Deep Learning

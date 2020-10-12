@@ -13,6 +13,7 @@ Today I Learned!
 
 * [200925 <테스트 주도 개발 - 켄트 백> 1~4장 정리](https://github.com/SeongIkKim/TIL/blob/master/TDD/Ch1~4.md)
 * [201005 <테스트 주도 개발 - 켄트 백> 5~10장 정리](https://github.com/SeongIkKim/TIL/blob/master/TDD/Ch5~10.md)
+* [201013 <테스트 주도 개발 - 켄트 백> 11~17장 정리](https://github.com/SeongIkKim/TIL/blob/master/TDD/Ch11~17.md)
 
 ### DevOps
 

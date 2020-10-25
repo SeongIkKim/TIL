@@ -7,19 +7,27 @@ class TestCase():
 
     def setUp(self):
         '''
-        하위 클래스(WasRun,TestCaseTest)에서 오버라이드할 추상 메서드
+        하위 클래스 WasRun에서 오버라이드할 추상 메서드
+        '''
+        pass
+
+    def tearDown(self):
+        '''
+        하위 클래스 WasRun에서 오버라이드할 추상 메서드
         '''
         pass
 
     def run(self):
         '''
         메서드 동적 호출
-        getattr(object, name, default)는 object 내에서 주어진 string(name)과 동일한 method를 반환해준다.
-        따라서 테스트케이스의 이름을 전달했을 때, 해당 테스트케이스가 호출되었는지를 기록할 수 있다.
         '''
+        result = TestResult() # 실행결과 객체 할당
+        result.testStarted() # 실행 카운트 기록
         self.setUp()
-        method = getattr(self, self.name) # 상수를 변수(method)로 변화시켜 일반화하는 리팩토링의 예
+        method = getattr(self, self.name)
         method()
+        self.tearDown()
+        return result
 
 
 class WasRun(TestCase):
@@ -28,23 +36,35 @@ class WasRun(TestCase):
     '''
 
     def __init__(self, name):
-        self.wasRun = None # 테스트케이스가 호출되었는지를 알려주는 어트리뷰트
         TestCase.__init__(self, name)
-
-    def testMethod(self):
-        '''
-        메서드 호출여부 기록
-        메서드가 호출되었는지를 기억(flag)하는 메서드
-        '''
-        self.wasRun = 1
 
     def setUp(self):
         '''
         setUp 여부 기록
         여러 테스트를 실행할 때, 테스트 커플링을 피하기 위해(환경을 독립시키기 위해) 사용하는 일종의 세팅 메서드
         '''
-        self.wasRun = None
-        self.wasSetUp = 1
+        self.log = "setUp"
+
+    def testMethod(self):
+        '''
+        테스트메서드 호출여부 기록
+        메서드가 호출되었는지를 기억(flag)하는 메서드
+        '''
+        self.log += " testMethod"
+
+    def testBrokenMethod(self):
+        '''
+        실패하는 테스트의 stub
+        '''
+        raise Exception # 이번 장에서는 아직 예외 핸들링을 하지 않았다!
+
+    def tearDown(self):
+        '''
+        tearDown 여부 기록
+        테스트를 위해 setUp에서 할당받은 외부 자원을, 테스트가 종료되면 반환하는 메드서
+        '''
+        self.log += " tearDown"
+
 
 
 class TestCaseTest(TestCase):
@@ -52,28 +72,47 @@ class TestCaseTest(TestCase):
     테스트케이스를 수행하는 메인 클래스
     '''
 
-    def setUp(self):
+    def testTemplateMethod(self):
         '''
-        WasRun 인스턴스 생성 파트(각 테스트메서드마다 인스턴스를 분리하기 위하여)
+        setUp과 tearDown의 호출 순서 체크 테스트코드
         '''
-        self.test = WasRun("testMethod")
+        test = WasRun("testMethod")
+        test.run()
+        assert("setUp testMethod tearDown" == test.log)
 
-    def testRunning(self):
+    def testFailedResult(self):
         '''
-        test 코드 실행 테스트코드
+        실패하는 테스트 수가 제대로 나오는지 체크하는 테스트코드
         '''
-        # assert(not self.test.wasRun) # test-setUp이 존재하고 잘 돌아가므로 wasRun을 검사할 필요가 없어졌다(단순화)
-        self.test.run()
-        assert(self.test.wasRun) # 1
+        test = WasRun("testBrokenMethod")
+        result = test.run()
+        assert("1 run, 1 failed" == result.summary())
 
-    def testSetUp(self):
+    def testResult(self):
         '''
-        setUp 메서드 호출여부 테스트코드
+        실행결과가 제대로 나오는지 체크하는 테스트코드
         '''
-        self.test.run()
-        assert(self.test.wasSetUp)
+        test = WasRun("testMethod")
+        result = test.run()
+        assert("1 run, 0 failed" == result.summary())
+
+class TestResult:
+    '''
+    테스트메서드(들)의 실행결과를 기록하는 객체
+    '''
+
+    def __init__(self):
+        self.runCount = 0 # 실행된 테스트의 수 0으로 초기화
+
+    def testStarted(self):
+        self.runCount = self.runCount + 1
+
+    def summary(self):
+        '''
+        실행결과 반환 메서드
+        '''
+        return f"{self.runCount} run, 0 failed"
 
 # main
 
-TestCaseTest("testRunning").run()
-TestCaseTest("testSetUp").run()
+TestCaseTest("testTemplateMethod").run()

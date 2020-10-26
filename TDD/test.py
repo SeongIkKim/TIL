@@ -23,9 +23,12 @@ class TestCase():
         '''
         result = TestResult() # 실행결과 객체 할당
         result.testStarted() # 실행 카운트 기록
-        self.setUp()
-        method = getattr(self, self.name)
-        method()
+        self.setUp() # 이 코드에서 setUp에 문제가 발생했을 경우에는 예외를 잡을 수 없다.
+        try :
+            method = getattr(self, self.name)
+            method()
+        except :
+            result.testFailed() # 예외 발생시 Failed 카운트 올리기
         self.tearDown()
         return result
 
@@ -88,6 +91,15 @@ class TestCaseTest(TestCase):
         result = test.run()
         assert("1 run, 1 failed" == result.summary())
 
+    def testFaieldResultFormatting(self):
+        '''
+        테스트 시작/실패 메시지 체크 테스트코드
+        '''
+        result = TestResult()
+        result.testStarted() # 테스트 시작시 보내는 메시지
+        result.testFailed() # 테스트 실패시 보내는 메시지
+        assert("1 run, 1 failed" == result.summary())
+
     def testResult(self):
         '''
         실행결과가 제대로 나오는지 체크하는 테스트코드
@@ -103,15 +115,19 @@ class TestResult:
 
     def __init__(self):
         self.runCount = 0 # 실행된 테스트의 수 0으로 초기화
+        self.failureCount = 0
 
     def testStarted(self):
         self.runCount = self.runCount + 1
+
+    def testFailed(self):
+        self.failureCount += 1
 
     def summary(self):
         '''
         실행결과 반환 메서드
         '''
-        return f"{self.runCount} run, 0 failed"
+        return f"{self.runCount} run, {self.failureCount} failed"
 
 # main
 
